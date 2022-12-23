@@ -17,9 +17,8 @@ import {
 import axios from "axios";
 import Row from "./TableComponents/Row.js";
 import { useNavigate } from "react-router-dom";
- 
+
 function AssetList() {
-  const dataFetchedRef = useRef(false);
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
@@ -31,7 +30,6 @@ function AssetList() {
 
   const handleClose = () => {
     setOpen(false);
-    console.log("test")
   };
 
   const fetchAssets = () => {
@@ -50,8 +48,8 @@ function AssetList() {
   const deleteAsset = (id) => {
     axios
       .delete(`https://localhost:7036/api/Assets/${id}`)
-      .then((res) => {
-        setAssets(assets.filter(a=>a.id!==id))
+      .then(() => {
+        setAssets(assets.filter((a) => a.id !== id));
         setOpen(true);
         setAlert({
           severity: "success",
@@ -85,8 +83,6 @@ function AssetList() {
   };
 
   useEffect(() => {
-    if (dataFetchedRef.current) return;
-    dataFetchedRef.current = true;
     fetchAssets();
   }, []);
 
@@ -112,7 +108,10 @@ function AssetList() {
                 </Button>
               </TableCell>
               <TableCell align="right">
-                <TextField label="search" onChange={handleSearch} />
+                <TextField
+                  label="Search by Asset Name"
+                  onChange={handleSearch}
+                />
               </TableCell>
             </TableRow>
           </TableHead>

@@ -28,9 +28,7 @@ function App() {
     aboutUs: false,
     users: false,
   });
-  const active = (e) => {
-    setActiveLink({ ...activeLink, [e]: true });
-  };
+  
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 

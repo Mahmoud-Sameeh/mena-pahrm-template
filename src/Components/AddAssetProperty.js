@@ -19,7 +19,6 @@ const AddAssetProperty = forwardRef((props, ref) => {
     setInputFields(newInputFields);
   };
 
-
   const handleAddFields = () => {
     setInputFields([...assetsInfo, { id: uuidv4() }]);
   };
@@ -50,8 +49,8 @@ const AddAssetProperty = forwardRef((props, ref) => {
   return (
     <div>
       <Container>
-        <Button onClick={handleRemoveFields}>Delete</Button>
-        <Button onClick={handleAddFields}>Add</Button>
+        <Button sx={{marginLeft:'3px'}} color="warning" variant="contained" onClick={handleRemoveFields}>Delete</Button>
+        <Button sx={{marginLeft:'3px'}}  variant="contained"  onClick={handleAddFields}>Add</Button>
         {assetsInfo.map((assetInfo, index) => (
           <Grid item key={index} md={12}>
             <Box

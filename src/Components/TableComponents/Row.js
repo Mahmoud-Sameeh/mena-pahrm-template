@@ -19,7 +19,7 @@ import {
 export default function Row(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
-  
+
   return (
     <Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -35,9 +35,10 @@ export default function Row(props) {
         <TableCell component="th" scope="row">
           {row.name}
         </TableCell>
+        <TableCell></TableCell>
         <TableCell component="th" scope="row">
           <Button
-            variant="outlined"
+            variant="contained"
             component={Link}
             to={`/edit-asset/${row.id}`}
           >
@@ -45,7 +46,14 @@ export default function Row(props) {
               Edit {row.name}
             </Typography>
           </Button>
-          <Button variant="outlined" color="error" sx={{ marginLeft: "3px" }} onClick={()=>{props.deleteAsset(row.id)}}>
+          <Button
+            variant="contained"
+            color="error"
+            sx={{ marginLeft: "3px" }}
+            onClick={() => {
+              props.deleteAsset(row.id);
+            }}
+          >
             <Typography sx={{ textTransform: "capitalize" }}>
               Delete {row.name}
             </Typography>

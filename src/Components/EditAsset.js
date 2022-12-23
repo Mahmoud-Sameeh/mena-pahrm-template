@@ -1,7 +1,7 @@
 import { Grid, TextField, Button } from "@mui/material";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AddAssetProperty from "./AddAssetProperty";
 
 function EditAsset() {
@@ -9,6 +9,7 @@ function EditAsset() {
   const [asset, setAsset] = useState({});
   const [assetName, setAssetName] = useState("");
   const assetPropsRef = useRef();
+  const navigate = useNavigate();
 
   const handleAssetUpdate = () => {
     const body = {
@@ -25,6 +26,7 @@ function EditAsset() {
         });
         setAssetName(res.data.name);
       });
+      navigate("/")
   };
 
   const FetchAsset = (id) => {
