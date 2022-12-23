@@ -1,4 +1,4 @@
-import { useState, Fragment, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Typography,
@@ -32,7 +32,7 @@ function AssetList() {
     setOpen(false);
   };
 
-  const fetchAssets = () => {
+  const fetchAssets = async () => {
     axios.get(`${process.env.REACT_APP_API_URL}Assets`).then((res) => {
       setAssets(
         res.data.map((a) => ({
@@ -70,7 +70,7 @@ function AssetList() {
       current.map((item) => {
         if (e.target.value === "") return { ...item, hide: false };
 
-        if (item.name.toLowerCase().includes(e.target.value))
+        if (item.name.toLowerCase().trim().includes(e.target.value.toLowerCase().trim()))
           return { ...item, hide: false };
 
         return { ...item, hide: true };

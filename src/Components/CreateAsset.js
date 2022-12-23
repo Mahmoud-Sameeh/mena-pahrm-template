@@ -7,7 +7,7 @@ import AddAssetProperty from "./AddAssetProperty";
 function CreateAsset() {
   const { id } = useParams();
   const assetPropsRef = useRef();
-  const [asset, setAsset] = useState({});
+  const [, setAsset] = useState({});
   const [assetName, setAssetName] = useState("");
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);

@@ -200,7 +200,6 @@ function App() {
           <Route path="/" element={<AssetList />} />
           <Route path="create-asset" element={<CreateAsset />} />
           <Route path="edit-asset/:id" element={<EditAsset />} />
-          <Route path="create-asset/:id" element={<CreateAsset />} />
         </Routes>
       </Router>
     </>

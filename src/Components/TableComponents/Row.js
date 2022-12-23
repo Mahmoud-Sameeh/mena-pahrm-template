@@ -21,21 +21,29 @@ export default function Row(props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <Fragment>
+    <>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>
           <IconButton
             aria-label="expand row"
             size="small"
-            onClick={() => setOpen(!open)}
+            onClick={() => {
+              setOpen(!open);
+            }}
           >
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.name}
+          <Button
+            onClick={() => {
+              setOpen(!open);
+            }}
+          >
+            {row.name}
+          </Button>
         </TableCell>
-        <TableCell></TableCell>
+         
         <TableCell component="th" scope="row">
           <Button
             variant="contained"
@@ -62,7 +70,7 @@ export default function Row(props) {
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+          <Collapse in={open}  >
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
                 Details
@@ -72,7 +80,7 @@ export default function Row(props) {
                   <TableRow>
                     <TableCell>Key</TableCell>
                     <TableCell>Value</TableCell>
-                    <TableCell></TableCell>
+                     
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -91,6 +99,6 @@ export default function Row(props) {
           </Collapse>
         </TableCell>
       </TableRow>
-    </Fragment>
+    </>
   );
 }
